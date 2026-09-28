@@ -6,24 +6,26 @@
 :root {
     --color-buttercup-sky: #FFF2B2;
     --color-dewy-blue: #A8C6E7;
+        --color-dewy-blue2: #bddbfdbc;
     --color-sunwashed: #FFE08A;
     --color-cloud-puff: #FFF7D6;
     --color-morning-breeze: #7FA8D6;
     --color-sunwashed2: #fffef9;
 }
 
-
-.container{
+.container {
     background: var(--color-cloud-puff);
-     height: 100vh;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     width: 800px;
-     margin: 0px auto;
-     gap: 20px;
-     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centers the editor vertically */
+    align-items: center;
+    width: min(800px, 100%);
+    margin: 0 auto;
+    gap: 20px;
+    padding: 20px;
 }
+
 .buttonsDiv{
     display: flex;
     justify-content: space-between;
@@ -47,7 +49,12 @@
 }
 
 .polaroidDiv{
-   background: var(--color-dewy-blue);
+    background-color: rgb(250, 249, 245);
+ background-image:
+        linear-gradient(to right, rgba(93,123,61,.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(93,123,61,.25) 1px, transparent 1px);
+
+    background-size: 30px 30px;
    width: 100%;
    padding: 10px;
    border: 2px dashed var(--color-buttercup-sky);
@@ -60,7 +67,7 @@
     width: fit-content;
 }
 .polaroid1 img{
-  width: 350px;
+  width: min(350px, 70vw);
 }
 
 .polaroid3{
@@ -74,7 +81,7 @@
 }
 
 .polaroid3 img{
-    width: 200px;
+   width: min(200px, 35vw);
 }
 
 .polaroid4{
@@ -88,12 +95,11 @@
 }
 
 .polaroid4 img{
-    width: 200px;
+     width: min(200px, 35vw);
 }
 .editing{
     background-color: var(--color-buttercup-sky);
     width: 100%;
-    height: 100%;
     border: 2px dashed var(--color-cloud-puff);
 }
 
@@ -106,12 +112,12 @@
 .feat{
     padding: 10px 15px;
     background:transparent;
-    font-size: 16px;
+     width: min(189px, 22vw);
+    font-size: clamp(12px, 2vw, 16px);
     border: none;
     box-shadow: inset 2px 4px 5px rgba(0, 0, 0, 0.118),
     5px 5px 7px rgba(0, 0, 0, 0.098);
     margin: 10px 0px;
-    width: 189px;
 }
 
 .feat:hover{
@@ -125,13 +131,14 @@
     margin: 4px auto;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     gap: 30px;
 
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     scrollbar-width: none;
 }
@@ -189,4 +196,48 @@
 }
 #gray{
     background-color: gray;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        min-height: auto;
+        padding: 12px;
+        gap: 12px;
+    }
+
+
+    .btn {
+        padding: 4px 10px;
+        font-size: 13px;
+    }
+
+    .polaroid1 {
+        padding: 10px 10px 25px;
+    }
+
+    .polaroid3 {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .polaroid4 {
+        padding: 10px 10px 25px;
+        gap: 10px;
+    }
+
+    .feat {
+        width: 130px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .relevantFeatures {
+        gap: 15px;
+    }
+
+    .color {
+        width: 40px;
+        height: 40px;
+    }
 }
