@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    background: plum;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 800px;
+     margin: 0px auto;
+     gap: 20px;
+}
+.buttonsDiv{
+    padding: 10px;
+    background: yellow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.polaroidDiv{
+   background: black;
+   width: 100%;
+   padding: 10px;
+
+}
+.polaroid1{
+    margin: 10px auto;
+    padding: 15px 15px 40px 15px;
+    background: pink;
+    width: fit-content;
+}
+.polaroid1 img{
+  width: 350px;
+}
+
+.polaroid3{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: palegoldenrod;
+    padding: 15px;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+.polaroid3 img{
+    width: 200px;
+}
+
+.polaroid4{
+    width: fit-content;
+     margin: 10px auto;
+    padding: 15px 15px 40px 15px;
+    background: pink;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.polaroid4 img{
+    width: 200px;
+}
+.editing{
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+}
+
+.features{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+
+}
+.feat{
+    padding: 8px 15px;
+    background:transparent;
+    font-size: 16px;
+    border: none;
+
+}
+
+.feat:hover{
+    background: red;
+}
