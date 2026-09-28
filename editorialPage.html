@@ -1,71 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Polaroid</title>
-    <link rel="stylesheet" href="./css/editorial.css">
-</head>
+    <link rel="stylesheet" href="./css/editorial.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
-       
-        <!-- For home button and save Button -->
-        <div class="buttonsDiv">
-            <button class="btn">Home</button>
-            <button class="btn">Save</button>
+      <!-- For home button and save Button -->
+      <div class="buttonsDiv">
+        <button class="btn">Home</button>
+        <button class="btn">Save</button>
+      </div>
+
+      <!-- Polaroid -->
+      <div class="polaroidDiv">
+        <div class="polaroid1 hide polaroidLayout" id="onePic">
+          <img src="./assets/img.jpg" alt="" class="img" />
+        </div>
+        <div class="polaroid3 hide polaroidLayout" id="threePics">
+          <img src="./assets/img.jpg" alt="" class="img" />
+          <img src="./assets/img.jpg" alt="" class="img" />
+          <img src="./assets/img.jpg" alt="" class="img" />
         </div>
 
-        <!-- Polaroid -->
-        <div class="polaroidDiv">
-                <!-- <div class="polaroid1">
-                <img src="./assets/img.jpg" alt="" class="img">
-               </div>  -->
-        <!-- <div class="polaroid3">
-                <img src="./assets/img.jpg" alt="" class="img">
-                <img src="./assets/img.jpg" alt="" class="img">
-                <img src="./assets/img.jpg" alt="" class="img">
-            </div> -->
-
-        <div class="polaroid4">
-            <img src="./assets/img.jpg" alt="" class="img">
-            <img src="./assets/img.jpg" alt="" class="img">
-            <img src="./assets/img.jpg" alt="" class="img">
-            <img src="./assets/img.jpg" alt="" class="img">
-
+        <div class="polaroid4 hide polaroidLayout" id="fourPics">
+          <img src="./assets/img.jpg" alt="" class="img" />
+          <img src="./assets/img.jpg" alt="" class="img" />
+          <img src="./assets/img.jpg" alt="" class="img" />
+          <img src="./assets/img.jpg" alt="" class="img" />
         </div>
-    </div>
-    
-    <button class="btn">Select Images</button>
+      </div>
 
-    <!-- Editing panel -->
-    <div class="editing">
-         <div class="features">
-            <button class="feat">Color</button>
-            <button class="feat">Frame</button>
-            <button class="feat">Filters</button>
-            <button class="feat">Stickers</button>
-         </div>
-        
+      <button class="btn">Select Images</button>
+
+      <!-- Editing panel -->
+      <div class="editing">
+        <div class="features">
+          <button class="feat">Color</button>
+          <button class="feat">Frame</button>
+          <button class="feat">Filters</button>
+          <button class="feat">Stickers</button>
+        </div>
+
         <div class="relevantFeatures">
-             <button class="color" id="red"></button>
-             <button class="color" id="pink"></button>
-             <button class="color" id="black"></button>
-             <button class="color" id="white"></button>
-             <button class="color" id="yellow"></button>
-              <button class="color" id="orange"></button>
-             <button class="color" id="blue"></button>
-             <button class="color" id="green"></button>
-             <button class="color" id="sky"></button>
-             <button class="color" id="purple"></button>
-             <button class="color" id="gray"></button>
-             
+          <button class="color" id="red"></button>
+          <button class="color" id="pink"></button>
+          <button class="color" id="black"></button>
+          <button class="color" id="white"></button>
+          <button class="color" id="yellow"></button>
+          <button class="color" id="orange"></button>
+          <button class="color" id="blue"></button>
+          <button class="color" id="green"></button>
+          <button class="color" id="sky"></button>
+          <button class="color" id="purple"></button>
+          <button class="color" id="gray"></button>
         </div>
-
+      </div>
     </div>
-    </div>
-</body>
 
+    <script src="./js/editingPage.js"></script>
+  </body>
 </html>
