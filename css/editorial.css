@@ -68,6 +68,8 @@
 }
 .polaroid1 img{
   width: min(350px, 70vw);
+    height: 350px;
+    object-fit: cover;
 }
 
 .polaroid3{
@@ -81,7 +83,10 @@
 }
 
 .polaroid3 img{
-   width: min(200px, 35vw);
+  width: min(200px, 35vw);
+    height: 200px;
+    object-fit: cover;
+
 }
 
 .polaroid4{
@@ -96,6 +101,8 @@
 
 .polaroid4 img{
      width: min(200px, 35vw);
+    height: 200px;
+    object-fit: cover;
 }
 .editing{
     background-color: var(--color-buttercup-sky);

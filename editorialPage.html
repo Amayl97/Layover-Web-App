@@ -18,23 +18,30 @@
       <!-- Polaroid -->
       <div class="polaroidDiv">
         <div class="polaroid1 hide polaroidLayout" id="onePic">
-          <img src="./assets/img.jpg" alt="" class="img" />
+          <img id="onePhoto1" src="./assets/img.jpg" alt="" class="img" />
         </div>
         <div class="polaroid3 hide polaroidLayout" id="threePics">
-          <img src="./assets/img.jpg" alt="" class="img" />
-          <img src="./assets/img.jpg" alt="" class="img" />
-          <img src="./assets/img.jpg" alt="" class="img" />
+          <img id="threePhoto1" src="./assets/img.jpg" alt="" class="img" />
+          <img id="threePhoto2" src="./assets/img.jpg" alt="" class="img" />
+          <img id="threePhoto3" src="./assets/img.jpg" alt="" class="img" />
         </div>
 
         <div class="polaroid4 hide polaroidLayout" id="fourPics">
-          <img src="./assets/img.jpg" alt="" class="img" />
-          <img src="./assets/img.jpg" alt="" class="img" />
-          <img src="./assets/img.jpg" alt="" class="img" />
-          <img src="./assets/img.jpg" alt="" class="img" />
+          <img id="fourPhoto1" src="./assets/img.jpg" alt="" class="img" />
+          <img id="fourPhoto2" src="./assets/img.jpg" alt="" class="img" />
+          <img id="fourPhoto3" src="./assets/img.jpg" alt="" class="img" />
+          <img id="fourPhoto4" src="./assets/img.jpg" alt="" class="img" />
         </div>
       </div>
 
-      <button class="btn">Select Images</button>
+      <button class="btn" id="imgInpBtn">Select Images</button>
+      <input
+    type="file"
+    id="imageInput"
+    accept="image/*"
+    multiple
+    hidden
+>
 
       <!-- Editing panel -->
       <div class="editing">
