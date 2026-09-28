@@ -3,9 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --color-buttercup-sky: #FFF2B2;
+    --color-dewy-blue: #A8C6E7;
+    --color-sunwashed: #FFE08A;
+    --color-cloud-puff: #FFF7D6;
+    --color-morning-breeze: #7FA8D6;
+    --color-sunwashed2: #fffef9;
+}
+
 
 .container{
-    background: plum;
+    background: var(--color-cloud-puff);
      height: 100vh;
      display: flex;
      flex-direction: column;
@@ -13,25 +22,41 @@
      width: 800px;
      margin: 0px auto;
      gap: 20px;
+     padding: 20px;
 }
 .buttonsDiv{
-    padding: 10px;
-    background: yellow;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+.btn{
+   padding: 5px 15px;
+   background-color: var(--color-sunwashed);
+   border: 2px dashed var(--color-cloud-puff);
+  font-size: 16px;
+  transition: 0.3s;
+}
+.btn:hover{
+    border: 2px solid black;
+     border-radius: 5px;
+}
+.btn:active{
+     border: 2px solid var(--color-sunwashed);
+     border-radius: 5px;
 }
 
 .polaroidDiv{
-   background: black;
+   background: var(--color-dewy-blue);
    width: 100%;
    padding: 10px;
+   border: 2px dashed var(--color-buttercup-sky);
 
 }
 .polaroid1{
     margin: 10px auto;
     padding: 15px 15px 40px 15px;
-    background: pink;
+    background: black;
     width: fit-content;
 }
 .polaroid1 img{
@@ -42,7 +67,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: palegoldenrod;
+      background: black;
     padding: 15px;
     width: fit-content;
     margin: 5px auto;
@@ -56,7 +81,7 @@
     width: fit-content;
      margin: 10px auto;
     padding: 15px 15px 40px 15px;
-    background: pink;
+     background: black;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -66,26 +91,102 @@
     width: 200px;
 }
 .editing{
-    background-color: aqua;
+    background-color: var(--color-buttercup-sky);
     width: 100%;
     height: 100%;
+    border: 2px dashed var(--color-cloud-puff);
 }
 
 .features{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid black;
-
+  
 }
 .feat{
-    padding: 8px 15px;
+    padding: 10px 15px;
     background:transparent;
     font-size: 16px;
     border: none;
-
+    box-shadow: inset 2px 4px 5px rgba(0, 0, 0, 0.118),
+    5px 5px 7px rgba(0, 0, 0, 0.098);
+    margin: 10px 0px;
+    width: 189px;
 }
 
 .feat:hover{
-    background: red;
+    background: var(--color-sunwashed);
+}
+.feat:active{
+    background-color: var(--color-sunwashed);
+}
+
+.relevantFeatures {
+    margin: 4px auto;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+}
+
+.relevantFeatures::-webkit-scrollbar {
+    display: none;
+}
+
+.color {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border: 2px dashed var(--color-buttercup-sky);
+    transition: 0.3s;
+}
+.color:hover{
+      border: 2px solid black;
+     border-radius: 15px;
+}
+.color:active{
+      border: 2px solid var(--color-sunwashed);
+     border-radius: 15px;
+}
+
+
+#red{
+    background: red;  
+}
+#pink{
+    background-color: pink;
+}
+#white{
+    background-color: white;
+}
+#black{
+    background-color: black;
+}
+#yellow{
+    background-color: yellow;
+}
+#orange{
+    background-color: orange;
+}
+#purple{
+    background-color: purple;
+}
+#blue{
+    background-color: blue;
+}
+#green{
+    background-color: rgb(1, 62, 1);
+}
+#sky{
+    background-color: skyblue;
+}
+#gray{
+    background-color: gray;
 }
