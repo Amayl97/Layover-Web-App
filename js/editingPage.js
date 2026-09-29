@@ -1,18 +1,23 @@
-const selectedLayout = localStorage.getItem("selectedLayout");
+const editingPanelSection = document.querySelector(".editingPanel")
+const downloadPanelSection = document.querySelector(".downloadSection")
+const selectedLayoutId = localStorage.getItem("selectedLayout");
+const selectedLayout = document.getElementById(selectedLayoutId);
 const imgInpBtn = document.getElementById("imgInpBtn");
 const imgInput = document.getElementById("imageInput")
+const saveBtn = document.getElementById("save");
+const homeBtn = document.getElementById("home")
 const imageRequirements = {
     onePic: 1,
     threePics: 3,
     fourPics: 4
 };
 
-const requiredImages = imageRequirements[selectedLayout];
+const requiredImages = imageRequirements[selectedLayoutId];
 
 const layouts = document.querySelectorAll(".polaroidLayout");
 
 layouts.forEach(layout => {
-    if (layout.id === selectedLayout) {
+    if (layout.id === selectedLayoutId) {
 
         layout.classList.remove("hide");
 
@@ -44,9 +49,19 @@ imgInput.addEventListener("change", () => {
 
 
     // Accessing the images from the layout so that we can replace them with selected images
-    const images = document.querySelectorAll(`#${selectedLayout} img`);
+    const images = document.querySelectorAll(`#${selectedLayoutId} img`);
 
      Array.from(files).forEach((file, index) => {
     images[index].src = URL.createObjectURL(file);
 });
 });
+
+saveBtn.addEventListener("click", () => {
+  editingPanelSection.classList.add("hide");
+  downloadPanelSection.classList.remove("hide")
+
+const developedPolaroid = document.querySelector(".developedPolaroid")
+const copy = selectedLayout.cloneNode(true);
+developedPolaroid.append(copy)
+   console.log(copy);
+})

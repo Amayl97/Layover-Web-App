@@ -8,11 +8,12 @@
   </head>
 
   <body>
+  <section class="editingPanel">
     <div class="container">
       <!-- For home button and save Button -->
       <div class="buttonsDiv">
-        <button class="btn">Home</button>
-        <button class="btn">Save</button>
+        <button class="btn" id="home">Home</button>
+        <button class="btn" id="save">Save</button>
       </div>
 
       <!-- Polaroid -->
@@ -67,6 +68,29 @@
         </div>
       </div>
     </div>
+    </section>
+
+    <!-- Download section -->
+ <section class="downloadSection  hide">
+     <div class="container">
+      <!-- HOme button -->
+         <button class="topBtn">Home</button>
+
+      <!-- For animation of developing -->
+      <div class="developed">
+        <div class="topPart"></div>
+        <div class="bottomPart"></div>
+        <!-- Final polaroid -->
+        <div class="developedPolaroid"></div>
+      </div>
+        <!-- Download and print button -->
+       <div class="finishedStateBtns">
+         <button id="downloadBtn" class="finiBtn">Download</button>
+         <button id="printBtn" class="finiBtn">Print</button>
+      </div>
+
+      </div>
+ </section>
 
     <script src="./js/editingPage.js"></script>
   </body>
