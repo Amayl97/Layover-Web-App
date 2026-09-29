@@ -78,7 +78,7 @@ h1{
     background-color: var(--color-sunwashed);
     border: 2px dashed var(--color-cloud-puff);
 
-    padding: clamp(10px, 4vw, 20px);
+    padding: clamp(10px, 3vw, 15px);
 
     width: fit-content;
     max-width: 90%;
@@ -89,6 +89,9 @@ h1{
 
     box-shadow:
         inset 6px 6px 5px rgba(0, 0, 0, 0.099),
+        inset -6px 6px 5px rgba(0, 0, 0, 0.099),
+        inset 6px -6px 5px rgba(0, 0, 0, 0.099),
+        inset -6px -6px 5px rgba(0, 0, 0, 0.099),
         5px 6px 5px rgba(0, 0, 0, 0.086);
 }
 

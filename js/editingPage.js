@@ -2,10 +2,188 @@ const editingPanelSection = document.querySelector(".editingPanel");
 const downloadPanelSection = document.querySelector(".downloadSection");
 const selectedLayoutId = localStorage.getItem("selectedLayout");
 const selectedLayout = document.getElementById(selectedLayoutId);
+let activePolaroid = selectedLayout;
 const imgInpBtn = document.getElementById("imgInpBtn");
 const imgInput = document.getElementById("imageInput");
 const saveBtn = document.getElementById("save");
 const homeBtn = document.querySelectorAll(".home");
+const relevantFeatures = document.querySelector(".relevantFeatures");
+const colorBtn = document.getElementById("colorBtn");
+const filterBtn = document.getElementById("filterBtn");
+const designBtn = document.getElementById("designBtn");
+const stickerBtn = document.getElementById("stickerBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+
+
+colorBtn.addEventListener("click", () => {
+
+    relevantFeatures.innerHTML = `
+        <button class="color" id="red"></button>
+        <button class="color" id="pink"></button>
+        <button class="color" id="black"></button>
+        <button class="color" id="white"></button>
+        <button class="color" id="yellow"></button>
+        <button class="color" id="orange"></button>
+        <button class="color" id="blue"></button>
+        <button class="color" id="green"></button>
+        <button class="color" id="sky"></button>
+        <button class="color" id="purple"></button>
+        <button class="color" id="gray"></button>
+    `;
+
+    document.querySelectorAll(".color").forEach(color => {
+
+        color.addEventListener("click", () => {
+
+            if (!activePolaroid) return;
+
+            activePolaroid.style.backgroundColor =
+                getComputedStyle(color).backgroundColor;
+
+        });
+
+    });
+
+});
+
+filterBtn.addEventListener("click", () => {
+
+    relevantFeatures.innerHTML = `
+        <button class="filter" data-filter="none">Original</button>
+        <button class="filter" data-filter="grayscale(1)">B&W</button>
+        <button class="filter" data-filter="sepia(0.6)">Vintage</button>
+        <button class="filter" data-filter="saturate(1.5)">Vivid</button>
+        <button class="filter" data-filter="brightness(1.15)">Bright</button>
+        <button class="filter" data-filter="contrast(1.2)">Contrast</button>
+    `;
+
+    document.querySelectorAll(".filter").forEach(filter => {
+
+        filter.addEventListener("click", () => {
+
+            if (!activePolaroid) return;
+
+            const images = activePolaroid.querySelectorAll("img");
+
+            images.forEach(image => {
+                image.style.filter = filter.dataset.filter;
+            });
+
+        });
+
+    });
+
+});
+
+designBtn.addEventListener("click", () => {
+
+    relevantFeatures.innerHTML = `
+        <button class="design" data-design="none">Plain</button>
+        <button class="design" data-design="grid">Grid</button>
+        <button class="design" data-design="dots">Dots</button>
+        <button class="design" data-design="stripes">Stripes</button>
+    `;
+
+    document.querySelectorAll(".design").forEach(design => {
+
+        design.addEventListener("click", () => {
+
+            if (!activePolaroid) return;
+
+            activePolaroid.classList.remove(
+                "design-grid",
+                "design-dots",
+                "design-stripes"
+            );
+
+            if (design.dataset.design !== "none") {
+                activePolaroid.classList.add(
+                    `design-${design.dataset.design}`
+                );
+            }
+
+        });
+
+    });
+
+});
+stickerBtn.addEventListener("click", () => {
+
+    relevantFeatures.innerHTML = `
+        <button class="sticker">🌸</button>
+        <button class="sticker">⭐</button>
+        <button class="sticker">💗</button>
+        <button class="sticker">🦋</button>
+        <button class="sticker">🎀</button>
+        <button class="sticker">✨</button>
+        <button class="sticker">☁️</button>
+        <button class="sticker">🍓</button>
+    `;
+
+    document.querySelectorAll(".sticker").forEach(sticker => {
+
+        sticker.addEventListener("click", () => {
+
+            if (!activePolaroid) return;
+
+            const newSticker = document.createElement("span");
+
+            newSticker.classList.add("placedSticker");
+            newSticker.textContent = sticker.textContent;
+
+            // Starting position
+            newSticker.style.left = "50%";
+            newSticker.style.top = "50%";
+
+            activePolaroid.appendChild(newSticker);
+
+            makeDraggable(newSticker, activePolaroid);
+        });
+
+    });
+
+});
+function makeDraggable(sticker, container) {
+
+    let isDragging = false;
+    let offsetX;
+    let offsetY;
+
+    sticker.addEventListener("pointerdown", (event) => {
+
+        isDragging = true;
+
+        const stickerRect = sticker.getBoundingClientRect();
+
+        offsetX = event.clientX - stickerRect.left;
+        offsetY = event.clientY - stickerRect.top;
+
+        sticker.setPointerCapture(event.pointerId);
+
+    });
+
+    sticker.addEventListener("pointermove", (event) => {
+
+        if (!isDragging) return;
+
+        const containerRect = container.getBoundingClientRect();
+
+        const x = event.clientX - containerRect.left - offsetX;
+        const y = event.clientY - containerRect.top - offsetY;
+
+        sticker.style.left = `${x}px`;
+        sticker.style.top = `${y}px`;
+
+    });
+
+    sticker.addEventListener("pointerup", () => {
+
+        isDragging = false;
+
+    });
+
+}
+
 
 homeBtn.forEach((home) => {
   home.addEventListener("click", () => {
@@ -71,3 +249,4 @@ saveBtn.addEventListener("click", () => {
     console.log(copy);
  
 });
+
