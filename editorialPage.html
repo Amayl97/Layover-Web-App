@@ -8,7 +8,32 @@
   </head>
 
   <body>
-  <section class="editingPanel">
+
+    <section class="loadingState hide" id="loadingState">
+    <div class="loadingContent">
+
+        <div class="loadingDecor decorOne">✦</div>
+        <div class="loadingDecor decorTwo">♡</div>
+        <div class="loadingDecor decorThree">✧</div>
+
+        <div class="loadingPolaroid">
+            <div class="loadingPhoto"></div>
+            <div class="loadingPolaroidBottom"></div>
+        </div>
+
+        <p class="loadingText" id="loadingText">
+            Getting everything ready...
+        </p>
+
+        <div class="loadingDots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+</section>
+  <section class="editingPanel hide" id="editingPanel">
     <div class="container">
       <!-- For home button and save Button -->
       <div class="buttonsDiv">
@@ -71,7 +96,7 @@
     </section>
 
     <!-- Download section -->
- <section class="downloadSection  hide">
+ <section class="downloadSection hide">
      <div class="container">
       <!-- HOme button -->
          <button class="topBtn home">Home</button>
@@ -84,10 +109,8 @@
         <div class="developedPolaroid"></div>
       </div>
         <!-- Download and print button -->
-       <div class="finishedStateBtns">
          <button class="finiBtn"  id="downloadBtn">Download</button>
-         <button class="finiBtn" id="printBtn" >Print</button>
-      </div>
+
 
       </div>
  </section>

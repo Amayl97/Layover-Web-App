@@ -12,8 +12,20 @@ const colorBtn = document.getElementById("colorBtn");
 const designBtn = document.getElementById("designBtn");
 const stickerBtn = document.getElementById("stickerBtn");
 const downloadBtn = document.getElementById("downloadBtn");
+const loadingState = document.getElementById("loadingState");
+const editingPanel = document.getElementById("editingPanel");
 
+window.addEventListener("load", () => {
 
+    loadingState.classList.remove("hide");
+    editingPanel.classList.add("hide");
+
+    setTimeout(() => {
+        loadingState.classList.add("hide");
+        editingPanel.classList.remove("hide");
+    }, 2000);
+
+});
 colorBtn.addEventListener("click", () => {
 
     relevantFeatures.innerHTML = `
@@ -211,45 +223,93 @@ imgInput.addEventListener("change", () => {
 });
 
 saveBtn.addEventListener("click", () => {
-     
-    editingPanelSection.classList.add("hide");
-    downloadPanelSection.classList.remove("hide");
 
-    const developedPolaroid = document.querySelector(".developedPolaroid");
+    // Hide editor
+    editingPanel.classList.add("hide");
+
+    // Show loading state
+    loadingState.classList.remove("hide");
+    loadingText.textContent = "Developing your Polaroid...";
+
+    // Prepare final Polaroid
+    const developedPolaroid =
+        document.querySelector(".developedPolaroid");
+
+    developedPolaroid.innerHTML = "";
+
     const copy = selectedLayout.cloneNode(true);
+
     developedPolaroid.append(copy);
-    console.log(copy);
- 
+
+    // Show download section after loading state
+    setTimeout(() => {
+
+        loadingState.classList.add("hide");
+        downloadPanelSection.classList.remove("hide");
+
+    }, 2000);
+
 });
 
 downloadBtn.addEventListener("click", async () => {
+    
     const polaroid = document.querySelector(
         ".developedPolaroid > .polaroidLayout"
     );
 
-    const oldAnimation = polaroid.style.animation;
-    const oldTransform = polaroid.style.transform;
+    // Show downloading state
+    loadingState.classList.remove("hide");
+    loadingText.textContent = "Saving your memory...";
+    try {
 
-    polaroid.style.animation = "none";
-    polaroid.style.transform = "none";
+        const oldAnimation = polaroid.style.animation;
+        const oldTransform = polaroid.style.transform;
 
-    await new Promise(resolve => requestAnimationFrame(resolve));
+        polaroid.style.animation = "none";
+        polaroid.style.transform = "none";
 
-    const rect = polaroid.getBoundingClientRect();
+        await new Promise(resolve =>
+            requestAnimationFrame(resolve)
+        );
 
-    const canvas = await html2canvas(polaroid, {
-        width: rect.width,
-        height: rect.height,
-        scale: 2,
-        backgroundColor: null,
-        useCORS: true
-    });
+        const rect = polaroid.getBoundingClientRect();
 
-    polaroid.style.animation = oldAnimation;
-    polaroid.style.transform = oldTransform;
+        const canvas = await html2canvas(polaroid, {
+            width: rect.width,
+            height: rect.height,
+            scale: 2,
+            backgroundColor: null,
+            useCORS: true
+        });
 
-    const link = document.createElement("a");
-    link.download = "my-polaroid.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+        polaroid.style.animation = oldAnimation;
+        polaroid.style.transform = oldTransform;
+
+        const link = document.createElement("a");
+        link.download = "my-polaroid.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        downloadPanelSection.classList.add("hide")
+
+        // Success
+        loadingText.textContent = "Your memory is ready! ✨";
+
+        setTimeout(() => {
+            loadingState.classList.add("hide");
+            downloadPanelSection.classList.remove("hide")
+        }, 1500);
+
+    } catch (error) {
+
+        console.error(error);
+
+        loadingText.textContent =
+            "Something went wrong. Please try again.";
+
+        setTimeout(() => {
+            loadingState.classList.add("hide");
+            
+        }, 1500);
+    }
+
 });
