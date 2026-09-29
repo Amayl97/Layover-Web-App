@@ -370,14 +370,13 @@
   box-shadow: none;
 }
 
-.developedPolaroid > .polaroid1,
-.developedPolaroid > .polaroid3,
-.developedPolaroid > .polaroid4 {
+.developedPolaroid > .polaroid1{
+    overflow: hidden;
     z-index: 2;
-  transform: translateY(-200px);
-    animation: print 3.2s ease-out forwards;
+  transform: translateY(-400px);
+    animation: print1 3.2s ease-out forwards;
 }
-@keyframes print{
+@keyframes print1{
     from {
         transform: translateY(-200px) scale(0.8);
     }
@@ -386,3 +385,32 @@
         transform: translateY(0) scale(0.8);
     }
 }
+.developedPolaroid > .polaroid3{
+ z-index: 2;
+  transform: translateY(100px);
+    animation: print3 2s ease-out forwards;
+}
+@keyframes print3{
+    from {
+        transform: translateY(-300px) scale(0.75);
+    }
+
+    to {
+        transform: translateY(-150px) scale(0.75);
+    }
+}
+.developedPolaroid > .polaroid4{
+ z-index: 2;
+  transform: translateY(-200px);
+    animation: print4 3.2s ease-out forwards;
+}
+@keyframes print4{
+    from {
+        transform: translateY(-400px) scale(0.7);
+    }
+
+    to {
+        transform: translateY(0) scale(0.75);
+    }
+}
+
