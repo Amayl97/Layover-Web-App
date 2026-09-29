@@ -9,7 +9,6 @@ const saveBtn = document.getElementById("save");
 const homeBtn = document.querySelectorAll(".home");
 const relevantFeatures = document.querySelector(".relevantFeatures");
 const colorBtn = document.getElementById("colorBtn");
-const filterBtn = document.getElementById("filterBtn");
 const designBtn = document.getElementById("designBtn");
 const stickerBtn = document.getElementById("stickerBtn");
 const downloadBtn = document.getElementById("downloadBtn");
@@ -46,34 +45,7 @@ colorBtn.addEventListener("click", () => {
 
 });
 
-filterBtn.addEventListener("click", () => {
 
-    relevantFeatures.innerHTML = `
-        <button class="filter" data-filter="none">Original</button>
-        <button class="filter" data-filter="grayscale(1)">B&W</button>
-        <button class="filter" data-filter="sepia(0.6)">Vintage</button>
-        <button class="filter" data-filter="saturate(1.5)">Vivid</button>
-        <button class="filter" data-filter="brightness(1.15)">Bright</button>
-        <button class="filter" data-filter="contrast(1.2)">Contrast</button>
-    `;
-
-    document.querySelectorAll(".filter").forEach(filter => {
-
-        filter.addEventListener("click", () => {
-
-            if (!activePolaroid) return;
-
-            const images = activePolaroid.querySelectorAll("img");
-
-            images.forEach(image => {
-                image.style.filter = filter.dataset.filter;
-            });
-
-        });
-
-    });
-
-});
 
 designBtn.addEventListener("click", () => {
 
@@ -250,3 +222,34 @@ saveBtn.addEventListener("click", () => {
  
 });
 
+downloadBtn.addEventListener("click", async () => {
+    const polaroid = document.querySelector(
+        ".developedPolaroid > .polaroidLayout"
+    );
+
+    const oldAnimation = polaroid.style.animation;
+    const oldTransform = polaroid.style.transform;
+
+    polaroid.style.animation = "none";
+    polaroid.style.transform = "none";
+
+    await new Promise(resolve => requestAnimationFrame(resolve));
+
+    const rect = polaroid.getBoundingClientRect();
+
+    const canvas = await html2canvas(polaroid, {
+        width: rect.width,
+        height: rect.height,
+        scale: 2,
+        backgroundColor: null,
+        useCORS: true
+    });
+
+    polaroid.style.animation = oldAnimation;
+    polaroid.style.transform = oldTransform;
+
+    const link = document.createElement("a");
+    link.download = "my-polaroid.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+});

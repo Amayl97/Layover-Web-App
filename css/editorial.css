@@ -1,8 +1,10 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --color-buttercup-sky: #fff2b2;
   --color-dewy-blue: #a8c6e7;
@@ -13,12 +15,16 @@
   --color-sunwashed2: #fffef9;
 }
 
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .container {
   background: var(--color-cloud-puff);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centers the editor vertically */
+  justify-content: center;
   align-items: center;
   width: min(800px, 100%);
   margin: 0 auto;
@@ -26,122 +32,217 @@
   padding: 20px;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
 .buttonsDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 10px;
 }
+
 .btn {
   padding: 5px 15px;
   background-color: var(--color-sunwashed);
   border: 2px dashed var(--color-cloud-puff);
   font-size: 16px;
   transition: 0.3s;
+  cursor: pointer;
 }
+
 .btn:hover {
   border: 2px solid black;
   border-radius: 5px;
 }
+
 .btn:active {
   border: 2px solid var(--color-sunwashed);
   border-radius: 5px;
 }
 
+/* =========================
+   POLAROID AREA
+========================= */
+
 .polaroidDiv {
   background-color: rgb(250, 249, 245);
+
   background-image:
-    linear-gradient(to right, rgba(93, 123, 61, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(93, 123, 61, 0.25) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      rgba(93, 123, 61, 0.25) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(93, 123, 61, 0.25) 1px,
+      transparent 1px
+    );
 
   background-size: 30px 30px;
+
   width: 100%;
   padding: 10px;
+
   border: 2px dashed var(--color-buttercup-sky);
 }
+
+/* =========================
+   SINGLE POLAROID
+========================= */
+
 .polaroid1 {
   margin: 10px auto;
-  padding: 15px 15px 40px 15px;
+  padding: 15px 15px 40px;
   background: black;
   width: fit-content;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
 }
+
 .polaroid1 img {
+  display: block;
   width: min(350px, 70vw);
-  height: 350px;
+  aspect-ratio: 1;
+  height: auto;
   object-fit: cover;
 }
+
+/* =========================
+   THREE PHOTO POLAROID
+========================= */
 
 .polaroid3 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   background: black;
+
   padding: 15px;
+
   width: fit-content;
+  max-width: 100%;
+
   margin: 5px auto;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .polaroid3 img {
+  display: block;
   width: min(200px, 35vw);
-  height: 200px;
+  aspect-ratio: 1;
+  height: auto;
   object-fit: cover;
 }
+
+/* =========================
+   FOUR PHOTO POLAROID
+========================= */
 
 .polaroid4 {
   width: fit-content;
+  max-width: 100%;
+
   margin: 10px auto;
-  padding: 15px 15px 40px 15px;
+
+  padding: 15px 15px 40px;
+
   background: black;
+
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 15px;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .polaroid4 img {
+  display: block;
+
   width: min(200px, 35vw);
-  height: 200px;
+  aspect-ratio: 1;
+  height: auto;
+
   object-fit: cover;
 }
+
+/* =========================
+   EDITING SECTION
+========================= */
+
 .editing {
   background-color: var(--color-buttercup-sky);
   width: 100%;
   border: 2px dashed var(--color-cloud-puff);
 }
 
+/* =========================
+   FEATURE BUTTONS
+========================= */
+
 .features {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;
+  gap: 5px;
 }
+
 .feat {
   padding: 10px 15px;
+
   background: transparent;
+
   width: min(189px, 22vw);
+
   font-size: clamp(12px, 2vw, 16px);
+
   border: none;
+
   box-shadow:
     inset 2px 4px 5px rgba(0, 0, 0, 0.118),
     5px 5px 7px rgba(0, 0, 0, 0.098);
-  margin: 10px 0px;
+
+  margin: 10px 0;
+
+  cursor: pointer;
+
+  transition: 0.2s;
 }
 
 .feat:hover {
   background: var(--color-sunwashed);
 }
+
 .feat:active {
   background-color: var(--color-sunwashed);
 }
+
+/* =========================
+   CUSTOMIZATION OPTIONS
+========================= */
 
 .relevantFeatures {
   margin: 4px auto;
 
   display: flex;
   flex-wrap: wrap;
+
   justify-content: flex-start;
   align-items: center;
+
   gap: 30px;
 
   width: 100%;
+
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -152,17 +253,28 @@
   display: none;
 }
 
+/* =========================
+   COLORS
+========================= */
+
 .color {
   width: 50px;
   height: 50px;
+
   flex-shrink: 0;
+
   border: 2px dashed var(--color-buttercup-sky);
+
   transition: 0.3s;
+
+  cursor: pointer;
 }
+
 .color:hover {
   border: 2px solid black;
   border-radius: 15px;
 }
+
 .color:active {
   border: 2px solid var(--color-sunwashed);
   border-radius: 15px;
@@ -171,75 +283,55 @@
 #red {
   background: red;
 }
+
 #pink {
   background-color: pink;
 }
+
 #white {
   background-color: white;
 }
+
 #black {
   background-color: black;
 }
+
 #yellow {
   background-color: yellow;
 }
+
 #orange {
   background-color: orange;
 }
+
 #purple {
   background-color: purple;
 }
+
 #blue {
   background-color: blue;
 }
+
 #green {
   background-color: rgb(1, 62, 1);
 }
+
 #sky {
   background-color: skyblue;
 }
+
 #gray {
   background-color: gray;
 }
-/* Filters */
-.filter {
-  width: 90px;
-  height: 50px;
-  flex-shrink: 0;
 
-  background: var(--color-dewy-blue);
-  color: var(--color-cloud-puff);
+/* =========================
+   FRAME DESIGNS
+========================= */
 
-  border: 2px dashed var(--color-buttercup-sky);
-
-  font-size: 14px;
-  font-weight: bold;
-
-  box-shadow:
-    inset 4px 4px 5px rgba(0, 0, 0, 0.099),
-    4px 4px 5px rgba(0, 0, 0, 0.086);
-
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.filter:hover {
-  background: var(--color-sunwashed);
-  color: black;
-  rotate: -2deg;
-  border-radius: 10px;
-}
-
-.filter:active {
-  box-shadow: none;
-  transform: translateY(2px);
-}
-
-
-/* Frame designs */
 .design {
   width: 90px;
   height: 50px;
+
   flex-shrink: 0;
 
   background: var(--color-morning-breeze);
@@ -255,13 +347,16 @@
     4px 4px 5px rgba(0, 0, 0, 0.086);
 
   transition: 0.2s;
+
   cursor: pointer;
 }
 
 .design:hover {
   background: var(--color-sunwashed);
   color: black;
+
   rotate: 2deg;
+
   border-radius: 10px;
 }
 
@@ -270,11 +365,14 @@
   transform: translateY(2px);
 }
 
+/* =========================
+   STICKERS
+========================= */
 
-/* Stickers */
 .sticker {
   width: 50px;
   height: 50px;
+
   flex-shrink: 0;
 
   background: var(--color-cloud-puff);
@@ -292,12 +390,15 @@
     4px 4px 5px rgba(0, 0, 0, 0.086);
 
   transition: 0.2s;
+
   cursor: pointer;
 }
 
 .sticker:hover {
   background: var(--color-sunwashed);
+
   rotate: -4deg;
+
   border-radius: 12px;
 }
 
@@ -305,281 +406,650 @@
   box-shadow: none;
   transform: translateY(2px);
 }
-@media (max-width: 600px) {
-  .container {
-    min-height: auto;
-    padding: 12px;
-    gap: 12px;
-  }
 
-  .btn {
-    padding: 4px 10px;
-    font-size: 13px;
-  }
-
-  .polaroid1 {
-    padding: 10px 10px 25px;
-  }
-
-  .polaroid3 {
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .polaroid4 {
-    padding: 10px 10px 25px;
-    gap: 10px;
-  }
-
-  .feat {
-    width: 130px;
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-
-  .relevantFeatures {
-    gap: 15px;
-  }
-
-  .color {
-    width: 40px;
-    height: 40px;
-  }
-  .filter,
-  .design {
-    width: 75px;
-    height: 42px;
-    font-size: 12px;
-  }
-
-  .sticker {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-  }
-}
+/* =========================
+   GENERAL
+========================= */
 
 .hide {
   display: none;
 }
 
+/* =========================
+   FINISHED / DOWNLOAD PAGE
+========================= */
+
 .topBtn {
   padding: 5px 15px;
+
   background-color: var(--color-sunwashed);
+
   border: 2px dashed var(--color-cloud-puff);
+
   font-size: 16px;
+
   transition: 0.3s;
+
   margin-right: auto;
   margin-bottom: 20px;
+
+  cursor: pointer;
 }
+
 .topBtn:hover {
   border: 2px solid black;
   border-radius: 5px;
 }
+
 .topBtn:active {
   border: 2px solid var(--color-sunwashed);
   border-radius: 5px;
 }
+
+/* =========================
+   PRINTER
+========================= */
+
 .developed {
   position: relative;
-  width: 700px;
-  height: 700px;
+
+  width: min(700px, 100%);
+  aspect-ratio: 1;
+
   background-color: rgb(250, 249, 245);
+
   background-image:
-    linear-gradient(to right, rgba(93, 123, 61, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(93, 123, 61, 0.25) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      rgba(93, 123, 61, 0.25) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(93, 123, 61, 0.25) 1px,
+      transparent 1px
+    );
 
   background-size: 30px 30px;
 }
 
+/* =========================
+   PRINTER TOP
+========================= */
+
 .topPart {
-    position: relative;
-    z-index: 3;
-    border: none;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+  position: relative;
 
-    box-shadow:
-        inset 0 8px 8px rgba(0, 0, 0, 0.15),
-        inset 8px 0 8px rgba(0, 0, 0, 0.15),
-        inset -8px 0 8px rgba(0, 0, 0, 0.15),
-        0 8px 4px rgba(0, 0, 0, 0.487);
+  z-index: 3;
 
-    margin: 10px auto 0 auto;
+  border: none;
 
-    width: 400px;
-    height: 100px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 
-    background: var(--color-morning-breeze);
+  box-shadow:
+    inset 0 8px 8px rgba(0, 0, 0, 0.15),
+    inset 8px 0 8px rgba(0, 0, 0, 0.15),
+    inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    0 8px 4px rgba(0, 0, 0, 0.487);
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 100%,
-        90% 100%,
-        90% 92%,
-        10% 92%,
-        10% 100%,
-        0 100%
-    );
+  margin: 10px auto 0;
+
+  width: min(400px, 57.15%);
+  height: clamp(60px, 14.3%, 100px);
+
+  background: var(--color-morning-breeze);
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    90% 100%,
+    90% 92%,
+    10% 92%,
+    10% 100%,
+    0 100%
+  );
 }
+
+/* =========================
+   PRINTER BOTTOM
+========================= */
+
 .bottomPart {
-    position: relative;
-    z-index: 1;
+  position: relative;
 
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+  z-index: 1;
 
-    box-shadow:
-        inset 8px 0 8px rgba(0, 0, 0, 0.15),
-        inset -8px 0 8px rgba(0, 0, 0, 0.15),
-        inset 0 -8px 8px rgba(0, 0, 0, 0.15),
-        0 -8px 8px rgba(0, 0, 0, 0.25);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
-    margin: 0 auto 10px auto;
+  box-shadow:
+    inset 8px 0 8px rgba(0, 0, 0, 0.15),
+    inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.15),
+    0 -8px 8px rgba(0, 0, 0, 0.25);
 
-    width: 400px;
-    height: 100px;
+  margin: 0 auto 10px;
 
-    background: var(--color-morning-breeze);
+  width: min(400px, 57.15%);
+  height: clamp(60px, 14.3%, 100px);
 
-    clip-path: polygon(
-        0 0,
-        10% 0,
-        10% 8%,
-        90% 8%,
-        90% 0,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+  background: var(--color-morning-breeze);
+
+  clip-path: polygon(
+    0 0,
+    10% 0,
+    10% 8%,
+    90% 8%,
+    90% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
 }
-.developedPolaroid{
-   position: relative;
-    z-index: 2;
+
+/* =========================
+   DEVELOPED POLAROID
+========================= */
+
+.developedPolaroid {
+  position: relative;
+  z-index: 2;
 }
+
+/* =========================
+   FINISHED BUTTONS
+========================= */
 
 .finishedStateBtns {
   display: flex;
+
   justify-content: center;
   align-items: center;
+
   gap: 20px;
+
+  flex-wrap: wrap;
 }
+
 .finiBtn {
   position: relative;
-    z-index: 10;
+
+  z-index: 10;
+
   padding: 10px 18px;
+
   background: var(--color-morning-breeze);
+
   border: 2px dashed var(--color-cloud-puff);
+
   font-size: 16px;
+
   box-shadow:
     inset 6px 6px 5px rgba(0, 0, 0, 0.099),
     5px 6px 5px rgba(0, 0, 0, 0.086);
+
   margin: 10px 15px;
+
   color: var(--color-cloud-puff);
+
   cursor: pointer;
 }
 
 .finiBtn:hover {
   rotate: -3deg;
 }
+
 .finiBtn:active {
   box-shadow: none;
 }
-.polaroid1,
-.polaroid3,
-.polaroid4 {
-      position: relative;
-    overflow: hidden;
-}
-.developedPolaroid > .polaroid1{
-    overflow: hidden;
-    z-index: 2;
+
+/* =========================
+   PRINTING ANIMATION
+========================= */
+
+.developedPolaroid > .polaroid1 {
+  overflow: hidden;
+
+  z-index: 2;
+
   transform: translateY(-400px);
-    animation: print1 3.2s ease-out forwards;
-}
-@keyframes print1{
-    from {
-        transform: translateY(-200px) scale(0.8);
-    }
 
-    to {
-        transform: translateY(0) scale(0.84);
-    }
+  animation: print1 3.2s ease-out forwards;
 }
-.developedPolaroid > .polaroid3{
- z-index: 2;
+
+@keyframes print1 {
+  from {
+    transform: translateY(-200px) scale(0.8);
+  }
+
+  to {
+    transform: translateY(0) scale(0.84);
+  }
+}
+
+.developedPolaroid > .polaroid3 {
+  z-index: 2;
+
   transform: translateY(100px);
-    animation: print3 2s ease-out forwards;
-}
-@keyframes print3{
-    from {
-        transform: translateY(-300px) scale(0.75);
-    }
 
-    to {
-        transform: translateY(-150px) scale(0.75);
-    }
+  animation: print3 2s ease-out forwards;
 }
-.developedPolaroid > .polaroid4{
- z-index: 2;
+
+@keyframes print3 {
+  from {
+    transform: translateY(-300px) scale(0.75);
+  }
+
+  to {
+    transform: translateY(-150px) scale(0.75);
+  }
+}
+
+.developedPolaroid > .polaroid4 {
+  z-index: 2;
+
   transform: translateY(-200px);
-    animation: print4 3s ease-out forwards;
-}
-@keyframes print4{
-    from {
-        transform: translateY(-300px) scale(0.7);
-    }
 
-    to {
-        transform: translateY(-40px) scale(0.75);
-    }
+  animation: print4 3s ease-out forwards;
 }
 
-.disable{
+@keyframes print4 {
+  from {
+    transform: translateY(-300px) scale(0.7);
+  }
+
+  to {
+    transform: translateY(-40px) scale(0.75);
+  }
+}
+
+/* =========================
+   DISABLED
+========================= */
+
+.disable {
   opacity: 0.7;
   pointer-events: none;
 }
 
+/* =========================
+   FRAME DESIGNS
+========================= */
 
 .design-grid {
-    background-image:
-        linear-gradient(#ffffff55 1px, transparent 1px),
-        linear-gradient(90deg, #ffffff55 1px, transparent 1px);
-    background-size: 15px 15px;
+  background-image:
+    linear-gradient(#ffffff55 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff55 1px, transparent 1px);
+
+  background-size: 15px 15px;
 }
 
 .design-dots {
-    background-image: radial-gradient(#ffffff88 2px, transparent 2px);
-    background-size: 15px 15px;
+  background-image:
+    radial-gradient(#ffffff88 2px, transparent 2px);
+
+  background-size: 15px 15px;
 }
 
 .design-stripes {
-    background-image:
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            #ffffff55 10px,
-            #ffffff55 12px
-        );
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      #ffffff55 10px,
+      #ffffff55 12px
+    );
 }
 
+/* =========================
+   PLACED STICKERS
+========================= */
+
 .placedSticker {
-    position: absolute;
-    font-size: 35px;
-    z-index: 5;
+  position: absolute;
 
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
+  font-size: 35px;
 
-    transform: translate(-50%, -50%);
+  z-index: 5;
 
-    transition: transform 0.15s;
+  cursor: grab;
+
+  user-select: none;
+
+  touch-action: none;
+
+  transform: translate(-50%, -50%);
+
+  transition: transform 0.15s;
 }
 
 .placedSticker:active {
-    cursor: grabbing;
-    transform: translate(-50%, -50%) scale(1.1);
+  cursor: grabbing;
+
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+
+  .container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .polaroid1 img {
+    width: min(350px, 70vw);
+  }
+
+  .polaroid3 img {
+    width: min(200px, 32vw);
+  }
+
+  .polaroid4 img {
+    width: min(200px, 30vw);
+  }
+
+  .feat {
+    width: min(150px, 22vw);
+  }
+
+  .relevantFeatures {
+    gap: 20px;
+  }
+
+  .developed {
+    width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    min-height: 100vh;
+
+    width: 100%;
+
+    padding: 12px;
+
+    gap: 12px;
+  }
+
+  /* BUTTONS */
+
+  .buttonsDiv {
+    gap: 8px;
+  }
+
+  .btn,
+  .topBtn {
+    padding: 4px 10px;
+
+    font-size: 13px;
+  }
+
+  /* SINGLE POLAROID */
+
+  .polaroid1 {
+    padding: 10px 10px 25px;
+
+    max-width: 100%;
+  }
+
+  .polaroid1 img {
+    width: min(350px, 75vw);
+  }
+
+  /* THREE PHOTO POLAROID */
+
+  .polaroid3 {
+    gap: 10px;
+
+    padding: 10px;
+
+    max-width: 100%;
+  }
+
+  .polaroid3 img {
+    width: min(200px, 45vw);
+  }
+
+  /* FOUR PHOTO POLAROID */
+
+  .polaroid4 {
+    padding: 10px 10px 25px;
+
+    gap: 10px;
+
+    max-width: 100%;
+  }
+
+  .polaroid4 img {
+    width: min(200px, 38vw);
+  }
+
+  /* FEATURE BUTTONS */
+
+  .features {
+    width: 100%;
+
+    gap: 4px;
+  }
+
+  .feat {
+    width: 100%;
+
+    padding: 8px 5px;
+
+    margin: 5px 0;
+
+    font-size: 13px;
+  }
+
+  /* CUSTOMIZATION OPTIONS */
+
+  .relevantFeatures {
+    gap: 12px;
+
+    justify-content: center;
+
+    max-height: 120px;
+  }
+
+  .color {
+    width: 40px;
+    height: 40px;
+  }
+
+  .design {
+    width: 75px;
+    height: 42px;
+
+    font-size: 12px;
+  }
+
+  .sticker {
+    width: 40px;
+    height: 40px;
+
+    font-size: 22px;
+  }
+
+  /* PRINTER */
+
+  .developed {
+    width: 100%;
+
+    aspect-ratio: 1;
+
+    height: auto;
+  }
+
+  .topPart,
+  .bottomPart {
+    width: 57.15%;
+  }
+
+  .topPart,
+  .bottomPart {
+    height: 14.3%;
+  }
+
+  /* FINISHED BUTTONS */
+
+  .finishedStateBtns {
+    gap: 5px;
+  }
+
+  .finiBtn {
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    margin: 5px;
+  }
+
+  /* STICKERS */
+
+  .placedSticker {
+    font-size: 28px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+  .container {
+    padding: 8px;
+    gap: 10px;
+  }
+
+  .polaroid1 {
+    padding: 8px 8px 20px;
+  }
+
+  .polaroid1 img {
+    width: 75vw;
+  }
+
+  .polaroid3 {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .polaroid3 img {
+    width: 42vw;
+  }
+
+  .polaroid4 {
+    gap: 8px;
+    padding: 8px 8px 20px;
+  }
+
+  .polaroid4 img {
+    width: 38vw;
+  }
+
+  .features {
+    gap: 2px;
+  }
+
+  .feat {
+    font-size: 11px;
+    padding: 7px 3px;
+  }
+
+  .relevantFeatures {
+    gap: 8px;
+  }
+
+  .color {
+    width: 35px;
+    height: 35px;
+  }
+
+  .design {
+    width: 65px;
+    height: 38px;
+
+    font-size: 11px;
+  }
+
+  .sticker {
+    width: 35px;
+    height: 35px;
+
+    font-size: 19px;
+  }
+
+  .finiBtn {
+    padding: 7px 11px;
+
+    font-size: 13px;
+  }
+
+  .topBtn {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .developedPolaroid > .polaroid1 {
+z-index: 2;
+    animation-name: print1Mobile;
+  }
+
+  .developedPolaroid > .polaroid3 {
+    z-index: 2;
+    animation-name: print3Mobile;
+  }
+
+  .developedPolaroid > .polaroid4 {
+    z-index: 2;
+    animation-name: print4Mobile;
+  }
+
+  @keyframes print1Mobile {
+    from {
+      transform: translateY(-200px) scale(0.55);
+    }
+
+    to {
+      transform: translateY(0) scale(0.58);
+    }
+  }
+
+  @keyframes print3Mobile {
+    from {
+      transform: translateY(-200px) scale(0.52);
+    }
+
+    to {
+      transform: translateY(-90px) scale(0.52);
+    }
+  }
+
+  @keyframes print4Mobile {
+    from {
+      transform: translateY(-200px) scale(0.50);
+    }
+
+    to {
+      transform: translateY(-25px) scale(0.50);
+    }
+  }
 }
