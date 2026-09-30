@@ -4,9 +4,7 @@
 
 **Layover** is a cute, interactive web app inspired by the photo booth culture I discovered in South Korea. It lets you turn your own photos into customizable polaroids that you can save as digital memories.
 
-🔗 **Live Demo:** [Add your Vercel link here]
-
-🎥 **Demo Video:** [Add your video link here]
+🔗 **Live Demo:** https://layoverweb.vercel.app
 
 ---
 
